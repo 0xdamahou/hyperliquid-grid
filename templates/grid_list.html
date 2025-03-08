@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{.Translations.grid_list_title}}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .status-running { color: #28a745; }
+    .status-closed { color: #dc3545; }
+    .profit-positive { color: #28a745; }
+    .profit-negative { color: #dc3545; }
+  </style>
+</head>
+<body>
+<div class="container py-4">
+  <h1 class="mb-4">{{.Translations.grid_list_title}}</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>{{.Translations.symbol}}</th>
+            <th>{{.Translations.start_time}}</th>
+            <th>{{.Translations.open_price}}</th>
+            <th>{{.Translations.open_amount}}</th>
+            <th>{{.Translations.close_price}}</th>
+            <th>{{.Translations.success_count}}</th>
+            <th>{{.Translations.unmatched_count}}</th>
+            <th>{{.Translations.profit}}</th>
+            <th>{{.Translations.fee}}</th>
+            <th>{{.Translations.grid_status}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          {{range .Grids}}
+          <tr>
+            <td><a href="/grid/{{.GridID}}?key={{$.Key}}&lang={{$.Translations.lang}}">{{.Symbol}}</a></td>
+            <td>{{.StartTime.Format "2006-01-02 15:04:05"}}</td>
+            <td>{{printf "%.2f" .OpenPrice}}</td>
+            <td>{{printf "%.4f" .OpenNum}}</td>
+            <td>{{if eq .ClosePrice 0.0}}N/A{{else}}{{printf "%.2f" .ClosePrice}}{{end}}</td>
+            <td>{{.MatchedCount}}</td>
+            <td>{{.UnmatchedCount}}</td>
+            <td>
+              {{printf "%.2f" .Profit}}
+            </td>
+            <td>
+              {{printf "%.2f" .Fee}}
+            </td>
+            <td>
+            {{.Status}}
+            </td>
+          </tr>
+          {{end}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

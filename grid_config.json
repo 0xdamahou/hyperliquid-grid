@@ -1,0 +1,42 @@
+[
+  {
+    "symbol": "SOL",
+    "initial_size": 20,
+    "grid_step": 0.017,
+    "grid_size": 1,
+    "leverage": 5,
+    "price_precision": 2,
+    "act": "Start",
+    "enable": true
+  },
+  {
+    "symbol": "SUI",
+    "initial_size": 500,
+    "grid_step": 0.017,
+    "grid_size": 20,
+    "leverage": 5,
+    "price_precision": 4,
+    "act": "Start",
+    "enable": true
+  },
+  {
+    "symbol": "TRUMP",
+    "initial_size": 200,
+    "grid_step": 0.02,
+    "grid_size": 20,
+    "leverage": 5,
+    "price_precision": 3,
+    "act": "Start",
+    "enable": true
+  },
+  {
+    "symbol": "APT",
+    "initial_size": 500,
+    "grid_step": 0.02,
+    "grid_size": 20,
+    "leverage": 5,
+    "price_precision": 3,
+    "act": "Start",
+    "enable": true
+  }
+]

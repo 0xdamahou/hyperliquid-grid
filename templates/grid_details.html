@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Translations.title}} - Grid {{.GridID}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .status-running { color: #28a745; }
+        .status-closed { color: #dc3545; }
+        .profit-positive { color: #28a745; }
+        .profit-negative { color: #dc3545; }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <h1 class="mb-5">{{.Translations.title}} - Grid {{.GridID}}</h1>
+
+    <div class="card mb-5">
+        <div class="card-header">{{.Translations.summary}}</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <p><strong>{{.Translations.symbol}}:</strong> {{.Symbol}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p><strong>{{.Translations.open_price}}:</strong> {{printf "%.2f" .StartPrice}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p><strong>{{.Translations.open_amount}}:</strong> {{printf "%.4f" .StartSize}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p><strong>{{.Translations.grid_status}}:</strong>
+                        <span class="{{if eq .Status "Running"}}status-running{{else}}status-closed{{end}}">
+                        {{if eq .Status "Running"}}{{.Translations.status_running}}{{else}}{{.Translations.status_closed}}{{end}}
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <p><strong>{{.Translations.match_count}}:{{.MatchCount}}</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">{{.Translations.matched_grid}}</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>{{.Translations.buy_level}}</th>
+                        <th>{{.Translations.sell_level}}</th>
+                        <th>{{.Translations.buy_price}}</th>
+                        <th>{{.Translations.sell_price}}</th>
+                        <th>{{.Translations.buy_amount}}</th>
+                        <th>{{.Translations.sell_amount}}</th>
+                        <th>{{.Translations.profit}}</th>
+                        <th>{{.Translations.fee}}</th>
+                        <th>{{.Translations.buy_time}}</th>
+                        <th>{{.Translations.sell_time}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{range .TradePairs}}
+                    <tr>
+                        <td>{{.BuyLevel}}</td>
+                        <td>{{.SellLevel}}</td>
+                        <td>{{printf "%.2f" .BuyPrice}}</td>
+                        <td>{{printf "%.2f" .SellPrice}}</td>
+                        <td>{{printf "%.4f" .BuySize}}</td>
+                        <td>{{printf "%.4f" .SellSize}}</td>
+                        <td class="profit-positive">
+                            {{printf "%.2f" .Profit}}
+                        </td>
+                        <td>{{printf "%.2f" .Fee}}</td>
+                        <td>{{.BuyTime.Format "2006-01-02 15:04:05"}}</td>
+                        <td>{{.SellTime.Format "2006-01-02 15:04:05"}}</td>
+                    </tr>
+                    {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">{{.Translations.unmatched_grids}}</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>{{.Translations.level}}</th>
+                        <th>{{.Translations.time}}</th>
+                        <th>{{.Translations.price}}</th>
+                        <th>{{.Translations.size}}</th>
+                        <th>{{.Translations.side}}</th>
+                        <th>{{.Translations.fee}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{range .UnMatched}}
+                    <tr>
+                        <td>{{.Level}}</td>
+                        <td>{{.Time.Format "2006-01-02 15:04:05"}}</td>
+                        <td>{{printf "%.2f" .Price}}</td>
+
+                        <td>{{printf "%.4f" .Quantity}}</td>
+                        <td>{{.Side}}</td>
+                        <td>{{printf "%.2f" .Fee}}</td>
+                    </tr>
+                    {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
