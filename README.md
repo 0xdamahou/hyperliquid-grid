@@ -1,5 +1,7 @@
 # Hyperliquid Grid Project Introduction
+
 English | [中文](README-CN.md)
+
 **Hyperliquid Grid** is an automated trading system designed for cryptocurrency grid trading on [Hyperliquid.xyz](https://hyperliquid.xyz). Conducting futures trading on Hyperliquid offers the following three key advantages:
 
 1. **Superior Fee Structure**: The maker fee is only **0.001%**, half of what Binance charges, while Hyperliquid maintains excellent liquidity.
