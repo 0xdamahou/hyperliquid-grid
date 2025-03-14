@@ -88,8 +88,9 @@ func (gm *GridManager) StartGrid(quantity float64) error {
 		}
 
 	}
+	//if quantity=0, no need put order.
 	avgPrice, size, oid := gm.MarketOrder(quantity)
-	grid := NewGrid(gm.Symbol, avgPrice, quantity, oid, 0)
+	grid := NewGrid(gm.Symbol, avgPrice, quantity, oid, gm.Level)
 	//gm.Having = size
 	gm.SetHaving(size)
 	gm.CenterPrice = avgPrice
@@ -109,10 +110,6 @@ func (gm *GridManager) StartGrid(quantity float64) error {
 }
 
 func (gm *GridManager) StopGrid() error {
-
-	if !gm.IsRunning {
-		return fmt.Errorf("no running grid to stop for %s", gm.Symbol)
-	}
 
 	grid, _ := gm.Storage.GetRunningGridBySymbol(gm.Symbol)
 
@@ -227,9 +224,7 @@ func (gm *GridManager) UpdateLevel(level int) {
 }
 func FormatFloat2(num float64, decimal int) float64 {
 	factor := math.Pow(10, float64(decimal))
-	// 四舍五入到指定的小数位数
 	return math.Round(num*factor) / factor
-
 }
 
 func (gm *GridManager) LimitOrder(quantity float64, price float64, reduceOnly bool) int64 {

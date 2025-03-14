@@ -1,5 +1,5 @@
 # Hyperliquid Grid Project Introduction
-
+English | [中文](README-CN.md)
 **Hyperliquid Grid** is an automated trading system designed for cryptocurrency grid trading on [Hyperliquid.xyz](https://hyperliquid.xyz). Conducting futures trading on Hyperliquid offers the following three key advantages:
 
 1. **Superior Fee Structure**: The maker fee is only **0.001%**, half of what Binance charges, while Hyperliquid maintains excellent liquidity.
@@ -10,6 +10,6 @@
 
 If you find this system helpful to your profitability, you can use my referral code ([**DAMAHOU**](https://app.hyperliquid.xyz/join/DAMAHOU)) on Hyperliquid. By doing so, you’ll receive an additional **4% discount** on trading fees, and I’ll earn a **10% referral fee commission**.
 
-For instructions on how to use this system, please refer to the [`How-to-use.md`](./How-to-use.md) file.
+For instructions on how to use this system, please refer to the [`Hyperliquid-Grid-Tutorial.md`](.Hyperliquid-Grid-Tutorial.md) file.
 
 Wishing you the best of luck in striking it rich!
