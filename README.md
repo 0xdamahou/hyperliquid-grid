@@ -10,6 +10,6 @@ English | [中文](README-CN.md)
 
 If you find this system helpful to your profitability, you can use my referral code ([**DAMAHOU**](https://app.hyperliquid.xyz/join/DAMAHOU)) on Hyperliquid. By doing so, you’ll receive an additional **4% discount** on trading fees, and I’ll earn a **10% referral fee commission**.
 
-For instructions on how to use this system, please refer to the [`Hyperliquid-Grid-Tutorial.md`](.Hyperliquid-Grid-Tutorial.md) file.
+For instructions on how to use this system, please refer to the [`Hyperliquid-Grid-Tutorial.md`](Hyperliquid-Grid-Tutorial.md) file.
 
 Wishing you the best of luck in striking it rich!
